@@ -1,3 +1,5 @@
-import { toInteger } from "../toInteger";
+import { chunk } from "../chunk";
 
-console.log(toInteger(3.2));
+const array = ["a", "b", "c", "d"];
+
+console.log(chunk(array, 3));
