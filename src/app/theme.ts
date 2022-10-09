@@ -1,8 +1,3 @@
-/**
- * V3のtheme
- * @author FXS)zhang.puming
- */
-
 import { createTheme } from "@mui/material/styles";
 // Material-UIテーマを上書きする
 export const theme = createTheme({
