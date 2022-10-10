@@ -42,9 +42,9 @@ config:
   # ------typescript-operations config end
 
 # TODO use code fragment
-reusedFragment: &reusedFragment
-  - typescript
-  - typescript-operations
+# reusedFragment: &reusedFragment
+#   - typescript
+#   - typescript-operations
 
 generates:
   ./src/app/@common/@types/models/signIn.d.ts:

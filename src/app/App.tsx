@@ -5,10 +5,6 @@ import { ApolloProvider } from "./@common/apollo";
 import { Router } from "./Router";
 import { ErrorBoundary } from "./ErrorBoundary";
 
-/**
- * APP
- * @author FXS)zhang.puming
- */
 export const App = () => (
   <ApolloProvider>
     <CssBaseline />
