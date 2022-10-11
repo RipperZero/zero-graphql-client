@@ -1,11 +1,12 @@
-import { FC, useCallback, useEffect } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import { useCounterState } from "app/@common/apollo";
 import { CounterView } from "./Counter.view";
 
 // @see https://overreacted.io/zh-hans/a-complete-guide-to-useeffect/
-export const CounterContainer: FC = () => {
+const CounterContainer: FC = () => {
   // hooks start
   const { counterState, setCounterState } = useCounterState();
+  const [isLoading, setIsLoading] = useState(false);
   // hooks end
 
   // useEffect functions start
@@ -19,13 +20,13 @@ export const CounterContainer: FC = () => {
   // logic functions start
   const onClickIncrement = useCallback(() => {
     setCounterState((draftState) => {
-      draftState.counterNum += 1;
+      ++draftState.counterNum;
     });
   }, [setCounterState]);
 
   const onClickDecrement = useCallback(() => {
     setCounterState((draftState) => {
-      draftState.counterNum -= 1;
+      --draftState.counterNum;
     });
   }, [setCounterState]);
 
@@ -40,15 +41,17 @@ export const CounterContainer: FC = () => {
 
   const onClickAddAsync = useCallback(
     (amount: number = 0) => {
+      setIsLoading(true);
+
       setTimeout(() => {
         setCounterState((draftState) => {
           draftState.counterNum += amount;
         });
-      }, 1000);
+        setIsLoading(false);
+      }, 3000);
     },
     [setCounterState],
   );
-  console.log("render");
 
   const onClickAlertBtn = useCallback(() => {
     setTimeout(() => {
@@ -63,6 +66,7 @@ export const CounterContainer: FC = () => {
   return (
     <CounterView
       counterNum={counterState.counterNum}
+      isLoading={isLoading}
       onClickIncrement={onClickIncrement}
       onClickDecrement={onClickDecrement}
       onClickAddAmount={onClickAddAmount}
@@ -72,3 +76,5 @@ export const CounterContainer: FC = () => {
   );
   // render functions end
 };
+
+export { CounterContainer as FCCounter };

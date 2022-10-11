@@ -5,15 +5,16 @@ type CounterContainerProps = {};
 
 type CounterContainerState = {
   counterNum: number;
+  isLoding: boolean;
 };
 
-export class CounterContainer extends Component<
+class CounterContainer extends Component<
   CounterContainerProps,
   CounterContainerState
 > {
   constructor(props: CounterContainerProps) {
     super(props);
-    this.state = { counterNum: 0 };
+    this.state = { counterNum: 0, isLoding: false };
   }
   // state = { counterNum: 0 };
 
@@ -32,25 +33,33 @@ export class CounterContainer extends Component<
   };
 
   onClickIncrement = () => {
-    // this.setState({ counterNum: this.state.counterNum + 1 });
-    // this.setState((pre) => {
-    //   return { counterNum: pre.counterNum + 1 };
-    // });
-    this.setState((pre) => ({ counterNum: pre.counterNum + 1 }));
+    this.setState((pre) => {
+      return { ...pre, counterNum: pre.counterNum + 1 };
+    });
   };
 
   onClickDecrement = () => {
-    // this.setState({ counterNum: this.state.counterNum - 1 });
-    this.setState((pre) => ({ counterNum: pre.counterNum - 1 }));
+    this.setState((pre) => {
+      return { ...pre, counterNum: pre.counterNum - 1 };
+    });
   };
 
   onClickAddAmount = (amount: number = 0) => {
-    // this.setState({ counterNum: this.state.counterNum + amount });
-    this.setState((pre) => ({ counterNum: pre.counterNum + amount }));
+    this.setState((pre) => {
+      return { ...pre, counterNum: pre.counterNum + amount };
+    });
   };
 
   onClickAddAsync = (amount: number = 0) => {
-    setTimeout(() => this.onClickAddAmount(amount), 1000);
+    this.setState((pre) => {
+      return { ...pre, isLoding: true };
+    });
+    setTimeout(() => {
+      this.onClickAddAmount(amount);
+      this.setState((pre) => {
+        return { ...pre, isLoding: false };
+      });
+    }, 3000);
   };
 
   onClickAlertBtn = () => {
@@ -65,6 +74,7 @@ export class CounterContainer extends Component<
     return (
       <CounterView
         counterNum={this.state.counterNum}
+        isLoading={this.state.isLoding}
         onClickIncrement={this.onClickIncrement}
         onClickDecrement={this.onClickDecrement}
         onClickAddAmount={this.onClickAddAmount}
@@ -74,3 +84,5 @@ export class CounterContainer extends Component<
     );
   }
 }
+
+export { CounterContainer as ClassCounter };

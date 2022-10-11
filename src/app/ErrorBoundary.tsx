@@ -1,9 +1,9 @@
-import * as React from "react";
+import { Component, ErrorInfo, ReactNode } from "react";
 
 type Props = {
-  renderError?: (error: Error) => React.ReactNode;
-  onError?: (error: Error, errorInfo: React.ErrorInfo) => void;
-  children?: React.ReactNode;
+  renderError?: (error: Error) => ReactNode;
+  onError?: (error: Error, errorInfo: ErrorInfo) => void;
+  children?: ReactNode;
 };
 
 type State =
@@ -27,7 +27,7 @@ type State =
  * @author FXS)zhang.puming
  * @see https://zh-hans.reactjs.org/docs/error-boundaries.html
  */
-export class ErrorBoundary extends React.Component<Props, State> {
+export class ErrorBoundary extends Component<Props, State> {
   constructor(props: Readonly<Props>) {
     super(props);
     this.state = {
@@ -42,8 +42,8 @@ export class ErrorBoundary extends React.Component<Props, State> {
         "color: red",
       );
     },
-    renderError: (error) => {
-      return defaultFallbackComponent(error);
+    renderError: (_error) => {
+      return <div>Error</div>;
     },
   };
 
@@ -51,7 +51,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
     return { hasError: true, error };
   }
 
-  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     if (this.props.onError) {
       this.props.onError(error, errorInfo);
     }
@@ -66,16 +66,4 @@ export class ErrorBoundary extends React.Component<Props, State> {
     // 注意: this.props.children でエラーになるとコンポーネントがアンマウントされます
     return this.props.children;
   }
-}
-
-/**
- * デフォルトのエラーページコンポーネント（固定メッセージを表示するだけ）
- * @param _error エラー情報
- */
-function defaultFallbackComponent(_error: Error) {
-  return (
-    <div>
-      アプリケーションエラーにより表示できません。時間を置いて、再度更新してください。
-    </div>
-  );
 }

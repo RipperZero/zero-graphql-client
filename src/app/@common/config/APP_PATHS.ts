@@ -1,13 +1,6 @@
-// import { ProcessEnvUtils } from "hope-react-utils";
-// const BASEURL = ProcessEnvUtils.getBaseURL();
-
 const BASEURL = "/";
 
-/**
- * アプリケーションパスの定数
- */
 export const APP_PATHS = {
-  /** アプリケーションルート */
   ROOT: BASEURL,
 
   /** TEMPLATE */

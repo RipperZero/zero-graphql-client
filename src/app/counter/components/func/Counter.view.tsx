@@ -1,9 +1,12 @@
 import { FC, useState, useCallback } from "react";
 import { Box, Button, TextField, Typography, Container } from "@mui/material";
+import { LoadingButton } from "@mui/lab";
+import { VerticalDivider } from "../VerticalDivider";
 import styles from "../../assets/css/Counter.module.css";
 
 type CounterViewProps = {
   counterNum: number;
+  isLoading: boolean;
   onClickIncrement: () => void;
   onClickDecrement: () => void;
   onClickAddAmount: (amount: number) => void;
@@ -13,6 +16,7 @@ type CounterViewProps = {
 
 export const CounterView: FC<CounterViewProps> = ({
   counterNum,
+  isLoading = false,
   onClickIncrement,
   onClickDecrement,
   onClickAddAmount,
@@ -43,23 +47,21 @@ export const CounterView: FC<CounterViewProps> = ({
       <Box color="warning.main">
         <Box className={styles.row}>
           <Button
-            className={styles.button}
+            variant="outlined"
             aria-label="Increment value"
             onClick={onClickIncrement}
-            variant="outlined"
           >
-            {`+`}
+            +
           </Button>
           <Typography component="span" className={styles.value}>
             {counterNum}
           </Typography>
           <Button
-            className={styles.button}
+            variant="outlined"
             aria-label="Decrement value"
             onClick={onClickDecrement}
-            variant="outlined"
           >
-            {`-`}
+            -
           </Button>
         </Box>
         <Box className={styles.row}>
@@ -72,28 +74,23 @@ export const CounterView: FC<CounterViewProps> = ({
               setIncrementAmount(Number(event.target.value) || 0)
             }
           />
-          <Button
-            variant="contained"
-            className={styles.button}
-            onClick={onClickAddAmountBtn}
-          >
-            {`Add Amount`}
+          <VerticalDivider />
+          <Button variant="contained" onClick={onClickAddAmountBtn}>
+            Add Amount
           </Button>
-          <Button
+          <VerticalDivider />
+          <LoadingButton
             variant="contained"
-            className={styles.asyncButton}
+            loading={isLoading}
+            loadingPosition="center"
             onClick={onClickAddAsyncBtn}
           >
-            {`Add Async`}
-          </Button>
+            Add Async
+          </LoadingButton>
         </Box>
         <Box className={styles.row}>
-          <Button
-            variant="contained"
-            className={styles.button}
-            onClick={onClickAlertBtn}
-          >
-            {"Alert"}
+          <Button variant="contained" onClick={onClickAlertBtn}>
+            Alert
           </Button>
         </Box>
       </Box>
