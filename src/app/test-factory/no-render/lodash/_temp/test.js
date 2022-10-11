@@ -1,13 +1,4 @@
-// import { concat } from "../concat";
-import { difference } from "../difference";
+import { differenceBy } from "../differenceBy";
 
-const array = [1, 2, 3, 4];
-// const flattenArray = [1, [2, [3, [4]], 5], [[[6], 7]]];
-
-// console.log(concat([1], 2, [3], [[4]]));
-// console.log(!!"" ? 1 : 0);
-// console.log(NaN !== NaN);
-const arg = { a: 1, b: 8 };
-// console.log(Object.keys(arg));
-
-console.log(difference(null, [1, 2, 3, 4, 5]));
+console.log(differenceBy([3.1, 2.2, 1.3], [4.4, 2.5], Math.floor));
+console.log(differenceBy([{ x: 2 }, { x: 1 }], [{ x: 1 }], "x"));
