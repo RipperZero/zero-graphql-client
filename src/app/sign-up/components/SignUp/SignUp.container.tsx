@@ -1,17 +1,17 @@
-import { FC, useState, useEffect, useCallback } from "react";
+import { FC, useState, useEffect, useCallback, SyntheticEvent } from "react";
 import { AlertColor } from "@mui/material/Alert";
 import { useNextPage } from "app/@common/hooks";
 import { SignUpView } from "./SignUp.view";
-import { useLQueryUserInfo } from "../../operations/queries/signInQueries";
-import { useInsertUserMutation } from "../../operations/mutations/signInMutations";
+import { useLQueryUserInfo } from "../../operations/queries/signUpQueries";
+import { useInsertUserMutation } from "../../operations/mutations/signUpMutations";
+import { SnackbarCloseReason } from "@mui/material";
 
-type SignUpContainerProps = {};
-
-export const SignUpContainer: FC<SignUpContainerProps> = () => {
+const SignUpContainer: FC = () => {
   // hooks start
   const [userName, setUserName] = useState("");
   const [passWord, setPassWord] = useState("");
   const [email, setEmail] = useState("");
+
   // progress states
   const [showProgress, setShowProgress] = useState(false);
   const [progressVariant, setProgressVariant] = useState<
@@ -33,7 +33,6 @@ export const SignUpContainer: FC<SignUpContainerProps> = () => {
   // hooks end
 
   // useEffect functions start
-
   useEffect(() => {
     if (!queryInfo.loading && queryInfo.data) {
       if (queryInfo.data.userInfo.id === "-1") {
@@ -64,7 +63,7 @@ export const SignUpContainer: FC<SignUpContainerProps> = () => {
   }, [nextPage]);
 
   const onClickSignUpBtn = useCallback(() => {
-    if (userName === "") {
+    if (!userName) {
       setOpenSnackBar(true);
       setAlertSeverity("warning");
       setAlertMessage("请输入用户名QAQ");
@@ -83,14 +82,15 @@ export const SignUpContainer: FC<SignUpContainerProps> = () => {
   }, [email, insertUser, passWord, userName]);
 
   const handleOnBlur = useCallback(() => {
-    if (userName === "") {
+    if (!userName) {
+      console.log("---------------");
       setOpenSnackBar(true);
       setAlertSeverity("warning");
       setAlertMessage("请输入用户名QAQ");
       return;
     }
 
-    if (userName !== "") {
+    if (userName.length > 0) {
       queryUserInfo({
         variables: { username: userName },
       });
@@ -111,10 +111,17 @@ export const SignUpContainer: FC<SignUpContainerProps> = () => {
     [passWord],
   );
 
-  const handleOnCloseSnackbar = useCallback(() => {
-    setOpenSnackBar(false);
-    setAlertMessage("");
-  }, []);
+  const handleOnCloseSnackbar = useCallback(
+    (_event: SyntheticEvent<any> | Event, reason: SnackbarCloseReason) => {
+      if (reason === "clickaway") {
+        console.log("handleOnCloseSnackbar");
+        return;
+      }
+      setOpenSnackBar(false);
+      // setAlertMessage("");
+    },
+    [],
+  );
   // logic functions end
 
   // render functions start
@@ -140,3 +147,5 @@ export const SignUpContainer: FC<SignUpContainerProps> = () => {
   );
   // render functions end
 };
+
+export { SignUpContainer as SignUp };

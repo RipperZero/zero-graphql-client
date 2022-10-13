@@ -5,9 +5,9 @@ import {
   Box,
   Snackbar,
   Alert,
+  AlertColor,
   SnackbarCloseReason,
 } from "@mui/material";
-import { AlertColor } from "@mui/material/Alert";
 
 const useStyles = makeStyles((theme: Theme) => {
   return createStyles({
@@ -47,20 +47,6 @@ export const ZeroSnackBarView: FC<ZeroSnackBarViewProps> = ({
   // logic functions end
 
   // render functions start
-
-  // change the type of transition start
-  // const TransitionA: ComponentType<
-  //   TransitionProps & { children?: ReactElement<any, any> }
-  // > = forwardRef((props: TransitionProps) => {
-  //   return <Slide {...props} direction="up" />;
-  // });
-  // const TransitionB: ComponentType<TransitionProps> = (
-  //   props: TransitionProps,
-  // ) => {
-  //   return <Slide {...props} direction="down" />;
-  // };
-  // change the type of transition end
-
   return (
     <Box className={classes.rootBox}>
       <Snackbar

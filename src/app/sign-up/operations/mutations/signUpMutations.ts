@@ -2,7 +2,7 @@ import { gql, useMutation } from "@apollo/client";
 import {
   InsertUserMutation,
   InsertUserMutationVariables,
-} from "@common.models.signIn";
+} from "@common.models.signUp";
 
 export const FRAGMENT_USERINFO = gql`
   fragment userInfo on User {

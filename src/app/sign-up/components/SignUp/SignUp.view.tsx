@@ -1,4 +1,4 @@
-import { FC, useState, Dispatch, SetStateAction } from "react";
+import { FC, useState, Dispatch, SetStateAction, SyntheticEvent } from "react";
 import { makeStyles, createStyles } from "@mui/styles";
 import {
   Theme,
@@ -13,6 +13,7 @@ import {
   Link,
   CircularProgress,
   InputAdornment,
+  SnackbarCloseReason,
 } from "@mui/material";
 import { AlertColor } from "@mui/material/Alert";
 import { Check as CheckIcon, Close as CloseIcon } from "@mui/icons-material";
@@ -48,7 +49,10 @@ type SignUpViewProps = {
   alertMessage: string;
   openSnackBar: boolean;
   alertSeverity: AlertColor;
-  handleOnCloseSnackbar: () => void;
+  handleOnCloseSnackbar: (
+    event: SyntheticEvent<any> | Event,
+    reason: SnackbarCloseReason,
+  ) => void;
   userName: string;
   setUserName: Dispatch<SetStateAction<string>>;
   handleOnBlur: () => void;
@@ -61,7 +65,7 @@ type SignUpViewProps = {
   jumpToSignIn: () => void;
 };
 
-export const SignUpView: FC<SignUpViewProps> = ({
+const SignUpView: FC<SignUpViewProps> = ({
   showProgress,
   progressVariant,
   alertMessage,
@@ -209,3 +213,5 @@ export const SignUpView: FC<SignUpViewProps> = ({
   );
   // render functions end
 };
+
+export { SignUpView };

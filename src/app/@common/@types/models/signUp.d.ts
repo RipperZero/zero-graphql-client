@@ -1,4 +1,4 @@
-declare module "@common.models.signIn" {
+declare module "@common.models.signUp" {
   type Maybe<T> = T | null;
   type InputMaybe<T> = Maybe<T>;
   type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };

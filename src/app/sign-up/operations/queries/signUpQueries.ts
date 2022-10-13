@@ -2,7 +2,7 @@ import { gql, useLazyQuery } from "@apollo/client";
 import {
   FindUserInfoQuery,
   FindUserInfoQueryVariables,
-} from "@common.models.signIn";
+} from "@common.models.signUp";
 
 export const QUERY_USERINFO = gql`
   query findUserInfo($username: String!) {

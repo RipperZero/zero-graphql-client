@@ -47,12 +47,12 @@ config:
 #   - typescript-operations
 
 generates:
-  ./src/app/@common/@types/models/signIn.d.ts:
-    documents: "./src/app/sign-in/operations/**/signIn*.ts"
+  ./src/app/@common/@types/models/signUp.d.ts:
+    documents: "./src/app/sign-up/operations/**/signUp*.ts"
     plugins:
       - add:
           # placement: content
-          content: 'declare module "@common.models.signIn" {'
+          content: 'declare module "@common.models.signUp" {'
       - add:
           placement: append
           content: "}"
