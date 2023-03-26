@@ -26,7 +26,8 @@ import { Counter } from "app/counter";
 import { TestComponent } from "app/test-factory";
 import { ZeroAvatarView as ZeroAvatar } from "./ZeroAvatar.view";
 import { ExpandMenuView as ExpandMenu } from "./ExpandMenu.view";
-import { UsersDisplayTableContainer as UsersDisplayTable } from "./UsersDisplayTable/UsersDisplayTable.container";
+// import { UsersDisplayTableContainer as UsersDisplayTable } from "./UsersDisplayTable/UsersDisplayTable.container";
+import { Demo } from "./UsersDisplayTable/Demo";
 import { zeroLeftMenu } from "../config";
 
 const DRAWER_WIDTH = 240;
@@ -202,7 +203,8 @@ export const MainMenuView: FC = () => {
       >
         <Box className={classes.drawerHeader} />
         <ContentDisplayer index={"0-0"} value={tabPanelId}>
-          <UsersDisplayTable />
+          {/* <UsersDisplayTable /> */}
+          <Demo />
         </ContentDisplayer>
         <ContentDisplayer index={"0-1"} value={tabPanelId}>
           <Box>{"0-1"}</Box>

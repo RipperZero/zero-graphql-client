@@ -20,16 +20,16 @@ export const TABLEHEAD_CELLS: TableHeadCell[] = [
   { id: "idcard", numeric: false, disablePadding: false, label: "IdCard" },
   { id: "email", numeric: false, disablePadding: false, label: "Email" },
   { id: "mobile", numeric: false, disablePadding: false, label: "Mobile" },
-  {
-    id: "createdUser",
-    numeric: false,
-    disablePadding: false,
-    label: "CreatedUser",
-  },
-  {
-    id: "modifiedUser",
-    numeric: false,
-    disablePadding: false,
-    label: "ModifiedUser",
-  },
+  // {
+  //   id: "createdUser",
+  //   numeric: false,
+  //   disablePadding: false,
+  //   label: "CreatedUser",
+  // },
+  // {
+  //   id: "modifiedUser",
+  //   numeric: false,
+  //   disablePadding: false,
+  //   label: "ModifiedUser",
+  // },
 ];
