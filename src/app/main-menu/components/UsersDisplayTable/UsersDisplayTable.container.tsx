@@ -9,7 +9,7 @@ import {
 
 const PAGE_SIZE = 20;
 
-export const UsersDisplayTableContainer: FC = () => {
+const UsersDisplayTableContainer: FC = () => {
   // hooks start
   // const queryUsersResult = useQueryUsers();
 
@@ -81,3 +81,5 @@ export const UsersDisplayTableContainer: FC = () => {
   // );
   // render functions end
 };
+
+export { UsersDisplayTableContainer };

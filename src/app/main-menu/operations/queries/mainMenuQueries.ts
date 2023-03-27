@@ -12,11 +12,11 @@ export const FRAGMENT_USERINFO = gql`
     username
     email
     mobile
-    valid
-    createdUser
-    modifiedUser
-    createdTime
-    modifiedTime
+    # valid
+    # createdUser
+    # modifiedUser
+    # createdTime
+    # modifiedTime
   }
 `;
 

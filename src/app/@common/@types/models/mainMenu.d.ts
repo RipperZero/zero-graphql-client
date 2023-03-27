@@ -36,11 +36,6 @@ declare module "@common.models.mainMenu" {
       username: string;
       email: string;
       mobile: string;
-      valid: number;
-      createdUser: string;
-      modifiedUser: string;
-      createdTime: string;
-      modifiedTime: string;
     };
   };
 
@@ -51,11 +46,6 @@ declare module "@common.models.mainMenu" {
     username: string;
     email: string;
     mobile: string;
-    valid: number;
-    createdUser: string;
-    modifiedUser: string;
-    createdTime: string;
-    modifiedTime: string;
   };
 
   type FindUsersQueryVariables = Exact<{ [key: string]: never }>;
@@ -68,11 +58,6 @@ declare module "@common.models.mainMenu" {
       username: string;
       email: string;
       mobile: string;
-      valid: number;
-      createdUser: string;
-      modifiedUser: string;
-      createdTime: string;
-      modifiedTime: string;
     }>;
   };
 
@@ -94,11 +79,6 @@ declare module "@common.models.mainMenu" {
         username: string;
         email: string;
         mobile: string;
-        valid: number;
-        createdUser: string;
-        modifiedUser: string;
-        createdTime: string;
-        modifiedTime: string;
       }>;
     };
   };

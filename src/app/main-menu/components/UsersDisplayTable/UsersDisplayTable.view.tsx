@@ -142,8 +142,8 @@ export const UsersDisplayTableView: FC<UsersDisplayTableViewProps> = ({
                     <TableCell>{userInfo.idcard}</TableCell>
                     <TableCell>{userInfo.email}</TableCell>
                     <TableCell>{userInfo.mobile}</TableCell>
-                    <TableCell>{userInfo.createdUser}</TableCell>
-                    <TableCell>{userInfo.modifiedUser}</TableCell>
+                    {/* <TableCell>{userInfo.createdUser}</TableCell>
+                    <TableCell>{userInfo.modifiedUser}</TableCell> */}
                   </TableRow>
                 );
               })}
