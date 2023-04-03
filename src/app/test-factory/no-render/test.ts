@@ -36,19 +36,19 @@ export {};
 
 // console.log(c);
 
-class ZeroA {
-  private static aFunc = () => {
-    return "aaa";
-  };
-}
-ZeroA.aFunc();
-// @ts-ignore:next-line
-ZeroA.aFunc();
+// class ZeroA {
+//   private static aFunc = () => {
+//     return "aaa";
+//   };
+// }
+// ZeroA.aFunc();
+// // @ts-ignore:next-line
+// ZeroA.aFunc();
 
-class ZeroB {
-  public bFunc = () => {
-    return "bbb";
-  };
-}
-const objB = new ZeroB().bFunc;
-objB();
+// class ZeroB {
+//   public bFunc = () => {
+//     return "bbb";
+//   };
+// }
+// const objB = new ZeroB().bFunc;
+// objB();

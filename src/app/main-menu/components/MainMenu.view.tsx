@@ -108,13 +108,12 @@ export const MainMenuView: FC = () => {
 
   const nextPage = useNextPage();
 
-  const [isDraweropen, setIsDraweropen] = useState(true);
+  const [isDraweropen, setIsDraweropen] = useState(false);
   // secondaryMenuItemId 用于切换画面主要显示的内容
   const [tabPanelId, setTabPanelId] = useState(`0-0`);
   // hooks end
 
   // useEffect functions start
-  useEffect(() => {}, []);
   // useEffect functions end
 
   // logic functions start
