@@ -30,7 +30,12 @@ export const QUERY_USERS = gql`
 `;
 
 export const useQueryUsers = () => {
-  const { data, loading, error } = useQuery<FindUsersQuery>(QUERY_USERS);
+  const { data, loading, error } = useQuery<FindUsersQuery>(QUERY_USERS, {
+    context: { fetchCount: 1 },
+    onError: () => {
+      console.log("useQueryUsers onError");
+    },
+  });
 
   return { data, loading, error };
 };
