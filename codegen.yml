@@ -1,0 +1,71 @@
+# running server URL
+schema: "http://localhost:8080/zero"
+# common schema file URI
+# schema: "./graphql/@root.graphqls"
+hooks:
+  afterOneFileWrite:
+    - prettier --write
+# plugins config
+config:
+  # ------typescript config start
+  # @see https://www.graphql-code-generator.com/docs/plugins/typescript
+
+  noExport: true
+  enumsAsTypes: true
+  futureProofUnions: true
+  useImplementingTypes: true
+  # __typename without "?"
+  # nonOptionalTypename: true
+
+  # avoid using TypeScript optionals (?)
+  # avoidOptionals:
+  # field: true
+  # inputValue: true
+  # object: true
+  # defaultValue: true
+
+  # override the type value of Maybe
+  # maybeValue: T
+
+  # ------typescript config end
+
+  # ------typescript-operations config start
+  # @see https://www.graphql-code-generator.com/docs/plugins/typescript-operations
+
+  # important!!!!
+  onlyOperationTypes: true
+  preResolveTypes: true
+  # important!!!!
+  skipTypeNameForRoot: true
+  # Flatten fragment spread and inline fragments into a simple selection set before generating.
+  # flattenGeneratedTypes: true
+  # ------typescript-operations config end
+
+# TODO use code fragment
+# reusedFragment: &reusedFragment
+#   - typescript
+#   - typescript-operations
+
+generates:
+  ./src/app/@common/@types/models/signUp.d.ts:
+    documents: "./src/app/sign-up/operations/**/signUp*.ts"
+    plugins:
+      - add:
+          # placement: content
+          content: 'declare module "@common.models.signUp" {'
+      - add:
+          placement: append
+          content: "}"
+      - typescript
+      - typescript-operations
+
+  ./src/app/@common/@types/models/mainMenu.d.ts:
+    documents: "./src/app/main-menu/operations/**/mainMenu*.ts"
+    plugins:
+      - add:
+          content: 'declare module "@common.models.mainMenu" {'
+      - add:
+          placement: append
+          content: "}"
+      - typescript
+      - typescript-operations
